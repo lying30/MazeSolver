@@ -1,7 +1,7 @@
 /**
  * Creates a Maze made up of MazeCells
- * @author Ms. Namasivayam
- * @version 03/04/2022
+ * @author Lucas Ying
+ * @version 03/31/2022
  */
 
 import java.io.File;
@@ -138,6 +138,9 @@ public class Maze {
     public MazeCell getCell(int row, int col) {
         return this.mazeGrid[row][col];
     }
+    public int getNumRows() {return this.numRows; }
+    public int getNumCols() {return this.numCols; }
+
 
     /**
      * Determines if the cell is valid to visit.
@@ -147,6 +150,12 @@ public class Maze {
      */
     public boolean isValidCell(int row, int col) {
         // TODO: Complete this function
+        if(getCell(row, col).isWall() == true){
+            return false;
+        }
+        else if(getCell(row, col).isExplored() == true) {
+            return false;
+        }
         return true;
     }
 }
